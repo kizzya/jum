@@ -1,7 +1,7 @@
 local bel = {}
 local ass = game:GetService("UserInputService")
 ass.InputBegan:Connect(function(key, gpe)
-    if key.KeyCode == Enum.KeyCode.U and not gpe then
+    if key.KeyCode == Enum.KeyCode.Z and not gpe then
         for i,v in pairs(game:GetService("Players"):GetPlayers()) do
             if v.Name ~= game:GetService("Players").LocalPlayer.Name then
                 table.insert(bel, v.Character["Left Leg"]) 
