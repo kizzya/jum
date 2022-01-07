@@ -1,0 +1,52 @@
+local ewo = {}
+local x = game:GetService("UserInputService")
+if getgenv().jumpall == true then
+x.InputBegan:Connect(function(key, gpe)
+    if key.KeyCode == Enum.KeyCode.Z and not gpe then
+        for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Name ~= game:GetService("Players").LocalPlayer.Name then
+                table.insert(ewo, v.Character["Left Leg"]) 
+                local totouch = game:GetService("Players").LocalPlayer.Character.Head
+                local toggleon = 0 
+                local toggleoff = 1
+                firetouchinterest(v.Character["Left Leg"], totouch, toggleon)
+                firetouchinterest(v.Character["Left Leg"], totouch, toggleoff)
+            end
+        end
+    end
+end)
+else if getgenv().jumpoppteam == true then
+    getgenv().jumpall = false
+    getgenv().jumpteam = false
+    x.InputBegan:Connect(function(key, gpe)
+        if key.KeyCode == Enum.KeyCode.Z and not gpe then
+            for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+                if v.TeamColor ~= game:GetService("Players").LocalPlayer.TeamColor then
+                    table.insert(ewo, v.Character["Left Leg"]) 
+                    local totouch = game:GetService("Players").LocalPlayer.Character.Head
+                    local toggleon = 0 
+                    local toggleoff = 1
+                    firetouchinterest(v.Character["Left Leg"], totouch, toggleon)
+                    firetouchinterest(v.Character["Left Leg"], totouch, toggleoff)
+                end
+            end
+        end
+    end)
+else if getgenv().jumpteam == true then
+    x.InputBegan:Connect(function(key, gpe)
+        if key.KeyCode == Enum.KeyCode.Z and not gpe then
+            for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+                if v.TeamColor == game:GetService("Players").LocalPlayer.TeamColor then
+                    table.insert(ewo, v.Character["Left Leg"]) 
+                    local totouch = game:GetService("Players").LocalPlayer.Character.Head
+                    local toggleon = 0 
+                    local toggleoff = 1
+                    firetouchinterest(v.Character["Left Leg"], totouch, toggleon)
+                    firetouchinterest(v.Character["Left Leg"], totouch, toggleoff)
+                end
+            end
+        end
+    end)
+end
+end
+end
